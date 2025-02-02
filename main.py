@@ -8,7 +8,10 @@ class FullscreenApp:
         self.root = root
         self.root.title("Moderne GUI mit zufälligen Zahlen")
         self.root.attributes("-fullscreen", True)  # Vollbildmodus aktivieren
-
+        
+        # Verstecke den Mauszeiger
+        self.root.config(cursor="none")
+        
         # Style-Objekt erstellen
         style = ttk.Style()
         style.theme_use("superhero")  # Windows 11-ähnliches Theme setzen
@@ -43,6 +46,10 @@ class FullscreenApp:
         self.random_number_button_6 = ttk.Button(root, text="Zufallszahl 6", command=self.show_random_number, style="modern.TButton")
         self.random_number_button_6.grid(row=2, column=2, padx=20, pady=10, sticky="nsew")
 
+        # Close Button
+        self.close_button = ttk.Button(root, text="Close", command=self.close_app, style="modern.TButton")
+        self.close_button.grid(row=3, column=0, columnspan=3, padx=20, pady=10, sticky="nsew")
+
         # Escape-Taste zum Beenden
         self.root.bind("<Escape>", lambda event: self.close_app())
 
@@ -53,6 +60,7 @@ class FullscreenApp:
         self.root.grid_rowconfigure(0, weight=1)  # Erste Zeile (Label)
         self.root.grid_rowconfigure(1, weight=1)  # Zweite Zeile (Buttons)
         self.root.grid_rowconfigure(2, weight=1)  # Dritte Zeile (Buttons)
+        self.root.grid_rowconfigure(3, weight=1)  # Vierte Zeile (Close Button)
         self.root.grid_columnconfigure(0, weight=1)  # Erste Spalte (Buttons)
         self.root.grid_columnconfigure(1, weight=1)  # Zweite Spalte (Buttons)
         self.root.grid_columnconfigure(2, weight=1)  # Dritte Spalte (Buttons)
